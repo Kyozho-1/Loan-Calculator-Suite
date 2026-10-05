@@ -1,0 +1,332 @@
+<mxfile host="app.diagrams.net" pages="3">
+  <diagram name="Loan UML" id="YawVje8N0VyiQkDh-O0b">
+    <mxGraphModel dx="693" dy="345" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZWa-GkjDVy0v-p_8NHIh-11" edge="1" parent="1" source="vDvM8zztiEfkiLc-_KkA-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ZWa-GkjDVy0v-p_8NHIh-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vDvM8zztiEfkiLc-_KkA-1" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;rounded=1;roundedPerimeter=1;" value="&lt;i&gt;Loan&lt;/i&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="247" width="504" x="25" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="vDvM8zztiEfkiLc-_KkA-2" parent="vDvM8zztiEfkiLc-_KkA-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;rounded=1;roundedPerimeter=1;" value="- n: int&lt;br&gt;- r: decimal&lt;br&gt;- PMT: decimal&lt;br&gt;- PV: decimal&lt;br&gt;- FV: decimal&lt;br&gt;&lt;div&gt;- loanType: LoanType&lt;/div&gt;" vertex="1">
+          <mxGeometry height="98" width="504" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="vDvM8zztiEfkiLc-_KkA-3" parent="vDvM8zztiEfkiLc-_KkA-1" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=1;roundedPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="8" width="504" y="124" as="geometry" />
+        </mxCell>
+        <mxCell id="vDvM8zztiEfkiLc-_KkA-4" parent="vDvM8zztiEfkiLc-_KkA-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;rounded=1;roundedPerimeter=1;" value="&lt;i&gt;+ Loan(years: int, annualRate: decimal, PV: decimal, FV: decimal, loanType: loanType): void&lt;br&gt;+ CalculatePMT(): decimal&lt;br&gt;+ CalculateTotalInterest(): decimal&lt;br&gt;+ CalculateTotalPaid(): decimal&lt;br&gt;+ GetTotalNumOfPayments(): int&lt;br&gt;+ ToString(): string&lt;/i&gt;" vertex="1">
+          <mxGeometry height="115" width="504" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="ZWa-GkjDVy0v-p_8NHIh-7" parent="1" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=36;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;rounded=1;roundedPerimeter=1;" value="&lt;span style=&quot;font-style: normal;&quot;&gt;&amp;lt;&amp;lt;Enumeration&amp;gt;&amp;gt;&lt;br&gt;LoanTypes: int&lt;/span&gt;" vertex="1">
+          <mxGeometry height="134" width="251" x="588" y="50.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ZWa-GkjDVy0v-p_8NHIh-8" parent="ZWa-GkjDVy0v-p_8NHIh-7" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;rounded=1;roundedPerimeter=1;" value="+ MORTGAGE&amp;nbsp;&lt;br&gt;+ AUTO&lt;br&gt;+ STUDENT" vertex="1">
+          <mxGeometry height="98" width="251" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="ZWa-GkjDVy0v-p_8NHIh-27" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="General PMT Formula (Without FV)" vertex="1">
+          <mxGeometry height="30" width="125" x="642" y="215.9" as="geometry" />
+        </mxCell>
+        <mxCell id="9pdGL6JxRBVI5biHS7Gy-39" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,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;strokeColor=light-dark(#000000,#FFFFFF);fillColor=light-dark(#000000,#FFFFFF);" value="" vertex="1">
+          <mxGeometry height="54" width="222" x="579.9966666666668" y="260.9966666666667" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="byywdEuxA27CIjPz2-Ef" name="Loan Flowchart">
+    <mxGraphModel grid="0" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="CalculatePMT" vertex="1">
+          <mxGeometry height="30" width="81" x="1108" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-2" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ZdPzi1z5yRNXIaZODkwe-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-3" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Start" vertex="1">
+          <mxGeometry height="60" width="100" x="913" y="71" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Convert years to total number of payments (n), make r = annual rate / 100 / 12, and assign parameters to fields." vertex="1">
+          <mxGeometry height="100" width="161" x="895" y="196" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-5" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" value="End" vertex="1">
+          <mxGeometry height="60" width="100" x="913" y="348" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-6" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="ZdPzi1z5yRNXIaZODkwe-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Loan Constructor" vertex="1">
+          <mxGeometry height="30" width="60" x="933" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-8" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1148.5" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-9" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Start" vertex="1">
+          <mxGeometry height="60" width="100" x="1098.5" y="69" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-10" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1149.1666666666667" y="326.888905843099" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-11" connectable="0" parent="ZdPzi1z5yRNXIaZODkwe-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="false" vertex="1">
+          <mxGeometry relative="1" x="-0.3011" y="-3" as="geometry">
+            <mxPoint x="3" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-12" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ZdPzi1z5yRNXIaZODkwe-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-13" connectable="0" parent="ZdPzi1z5yRNXIaZODkwe-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="true" vertex="1">
+          <mxGeometry relative="1" x="-0.1829" y="-2" as="geometry">
+            <mxPoint y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-14" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="r == 0.0" vertex="1">
+          <mxGeometry height="100" width="100" x="1099" y="191" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Process the PMT formula from the values given from the constructor and return the PMT from the general PMT formula." vertex="1">
+          <mxGeometry height="128" width="153.5" x="1072.25" y="329" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="return PV / n" vertex="1">
+          <mxGeometry height="100" width="100" x="1247" y="191" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-17" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" value="End" vertex="1">
+          <mxGeometry height="60" width="100" x="1098.5" y="493" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-18" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="ZdPzi1z5yRNXIaZODkwe-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-19" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="ZdPzi1z5yRNXIaZODkwe-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jsPLxXKZApczjG3CrkBz-12" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ZdPzi1z5yRNXIaZODkwe-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-21" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Start" vertex="1">
+          <mxGeometry height="60" width="100" x="2178.75" y="68.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="ToString" vertex="1">
+          <mxGeometry height="30" width="81" x="2188.25" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Return the loan type, the PMT, total amount paid, total interest paid round to the nearest cent. And the total number of payments." vertex="1">
+          <mxGeometry height="74.5" width="153.5" x="2152" y="195.75" as="geometry" />
+        </mxCell>
+        <mxCell id="ZdPzi1z5yRNXIaZODkwe-25" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" value="End" vertex="1">
+          <mxGeometry height="60" width="100" x="2178.75" y="352" as="geometry" />
+        </mxCell>
+        <mxCell id="6HwXEYs1UomIe7HKamXR-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="CalculateTotalPaid" vertex="1">
+          <mxGeometry height="30" width="81" x="1469" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="6HwXEYs1UomIe7HKamXR-4" edge="1" parent="1" source="6HwXEYs1UomIe7HKamXR-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="6HwXEYs1UomIe7HKamXR-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6HwXEYs1UomIe7HKamXR-2" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Start" vertex="1">
+          <mxGeometry height="60" width="100" x="1459.5" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="6HwXEYs1UomIe7HKamXR-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="return PMT * n" vertex="1">
+          <mxGeometry height="100" width="100" x="1459.5" y="191" as="geometry" />
+        </mxCell>
+        <mxCell id="6HwXEYs1UomIe7HKamXR-5" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" value="End" vertex="1">
+          <mxGeometry height="60" width="100" x="1459.5" y="329" as="geometry" />
+        </mxCell>
+        <mxCell id="6HwXEYs1UomIe7HKamXR-6" edge="1" parent="1" source="6HwXEYs1UomIe7HKamXR-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="6HwXEYs1UomIe7HKamXR-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6HwXEYs1UomIe7HKamXR-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="CalculateTotalInterest" vertex="1">
+          <mxGeometry height="30" width="81" x="1789" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="5n6nx8ae0MuTLQysQIyW-3" edge="1" parent="1" source="5n6nx8ae0MuTLQysQIyW-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="5n6nx8ae0MuTLQysQIyW-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5n6nx8ae0MuTLQysQIyW-1" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Start" vertex="1">
+          <mxGeometry height="60" width="100" x="1779.5" y="69" as="geometry" />
+        </mxCell>
+        <mxCell id="5n6nx8ae0MuTLQysQIyW-6" edge="1" parent="1" source="5n6nx8ae0MuTLQysQIyW-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="5n6nx8ae0MuTLQysQIyW-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5n6nx8ae0MuTLQysQIyW-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="create totalPaid variable and call CalculateTotalPaid()" vertex="1">
+          <mxGeometry height="100" width="132.5" x="1763.25" y="183" as="geometry" />
+        </mxCell>
+        <mxCell id="5n6nx8ae0MuTLQysQIyW-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="return totalPaid - PV" vertex="1">
+          <mxGeometry height="100" width="132.5" x="1763.25" y="332" as="geometry" />
+        </mxCell>
+        <mxCell id="5n6nx8ae0MuTLQysQIyW-7" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" value="End" vertex="1">
+          <mxGeometry height="60" width="100" x="1779.5" y="472" as="geometry" />
+        </mxCell>
+        <mxCell id="5n6nx8ae0MuTLQysQIyW-8" edge="1" parent="1" source="5n6nx8ae0MuTLQysQIyW-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="5n6nx8ae0MuTLQysQIyW-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jsPLxXKZApczjG3CrkBz-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GetTotalNumOfPayments" vertex="1">
+          <mxGeometry height="30" width="81" x="1972" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="jsPLxXKZApczjG3CrkBz-8" edge="1" parent="1" source="jsPLxXKZApczjG3CrkBz-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="jsPLxXKZApczjG3CrkBz-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jsPLxXKZApczjG3CrkBz-6" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Start" vertex="1">
+          <mxGeometry height="60" width="100" x="1962.5" y="69" as="geometry" />
+        </mxCell>
+        <mxCell id="jsPLxXKZApczjG3CrkBz-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="return n" vertex="1">
+          <mxGeometry height="100" width="132.5" x="1946.25" y="177" as="geometry" />
+        </mxCell>
+        <mxCell id="jsPLxXKZApczjG3CrkBz-9" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" value="End" vertex="1">
+          <mxGeometry height="60" width="100" x="1962.5" y="352" as="geometry" />
+        </mxCell>
+        <mxCell id="jsPLxXKZApczjG3CrkBz-10" edge="1" parent="1" source="jsPLxXKZApczjG3CrkBz-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="jsPLxXKZApczjG3CrkBz-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jsPLxXKZApczjG3CrkBz-11" edge="1" parent="1" source="ZdPzi1z5yRNXIaZODkwe-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="ZdPzi1z5yRNXIaZODkwe-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="Q2fjqrEqjElHTbYJRhJL" name="Frontend Stuff">
+    <mxGraphModel dx="1543" dy="345" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jRyagVcxdnyPhSsQ84W--5" parent="1" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.window;align=left;verticalAlign=top;spacingLeft=8;strokeColor2=#008cff;strokeColor3=#c4c4c4;fontColor=#666666;mainText=;fontSize=17;labelBackgroundColor=none;whiteSpace=wrap;" value="Loan Calculator Suite" vertex="1">
+          <mxGeometry height="380" width="546" x="-3" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--19" parent="1" style="rounded=1;html=1;shadow=0;dashed=0;whiteSpace=wrap;fontSize=10;fillColor=#666666;align=center;strokeColor=#4D4D4D;fontColor=#ffffff;" value="Mortgage" vertex="1">
+          <mxGeometry height="16.88" width="80" x="-3" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--21" parent="1" style="rounded=1;html=1;shadow=0;dashed=0;whiteSpace=wrap;fontSize=10;fillColor=#666666;align=center;strokeColor=#4D4D4D;fontColor=#ffffff;" value="Auto" vertex="1">
+          <mxGeometry height="16.88" width="80" x="79" y="30.000000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--22" parent="1" style="rounded=1;html=1;shadow=0;dashed=0;whiteSpace=wrap;fontSize=10;fillColor=#666666;align=center;strokeColor=#4D4D4D;fontColor=#ffffff;" value="Student" vertex="1">
+          <mxGeometry height="16.88" width="80" x="161" y="30.000000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--23" parent="1" style="rounded=1;html=1;shadow=0;dashed=0;whiteSpace=wrap;fontSize=10;fillColor=#666666;align=center;strokeColor=#4D4D4D;fontColor=#ffffff;" value="Quit" vertex="1">
+          <mxGeometry height="16.88" width="50" x="493" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--29" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Number of years to pay off loan" vertex="1">
+          <mxGeometry height="16.88" width="170" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--32" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Annual Rate" vertex="1">
+          <mxGeometry height="16.88" width="170" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="PV (Present Value)" vertex="1">
+          <mxGeometry height="16.88" width="170" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--36" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Type of Loan" vertex="1">
+          <mxGeometry height="16.88" width="170" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--41" parent="1" style="rounded=1;fillColor=#253858;strokeColor=none;html=1;fontColor=#ffffff;align=left;fontSize=12;spacingLeft=10;pointerEvents=0;" value="Types" vertex="1">
+          <mxGeometry height="33" width="100" x="3" y="206.88" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--42" parent="jRyagVcxdnyPhSsQ84W--41" style="shape=triangle;direction=south;fillColor=#ffffff;strokeColor=none;html=1;pointerEvents=0;fontSize=20;" value="" vertex="1">
+          <mxGeometry height="6" relative="1" width="12" x="1" y="0.5" as="geometry">
+            <mxPoint x="-20" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--43" parent="1" style="rounded=1;fillColor=#ffffff;strokeColor=#DFE1E5;shadow=1;html=1;arcSize=4;hachureGap=4;pointerEvents=0;fontFamily=Helvetica;fontSize=20;" value="" vertex="1">
+          <mxGeometry height="107.12" width="110" x="3" y="242.88" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--44" parent="jRyagVcxdnyPhSsQ84W--43" style="rounded=0;fillColor=#F4F5F7;strokeColor=none;shadow=0;html=1;align=left;fontSize=12;spacingLeft=10;fontColor=#253858;resizeWidth=1;pointerEvents=0;" value="Mortgage" vertex="1">
+          <mxGeometry height="33" relative="1" width="110" as="geometry">
+            <mxPoint y="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--45" parent="jRyagVcxdnyPhSsQ84W--43" style="rounded=0;fillColor=none;strokeColor=none;shadow=0;html=1;align=left;fontSize=12;spacingLeft=10;fontColor=#253858;resizeWidth=1;pointerEvents=0;" value="Auto" vertex="1">
+          <mxGeometry height="33" relative="1" width="110" as="geometry">
+            <mxPoint y="39" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--46" parent="jRyagVcxdnyPhSsQ84W--43" style="rounded=0;fillColor=none;strokeColor=none;shadow=0;html=1;align=left;fontSize=12;spacingLeft=10;fontColor=#253858;resizeWidth=1;pointerEvents=0;" value="Student" vertex="1">
+          <mxGeometry height="33" relative="1" width="110" as="geometry">
+            <mxPoint y="72" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--48" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="16.88" width="170" y="156.88" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--49" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="16.88" width="170" y="116.88" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--50" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="16.88" width="170" y="76.88" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--55" parent="1" style="line;strokeWidth=2;direction=south;html=1;" value="" vertex="1">
+          <mxGeometry height="333.12" width="10" x="170" y="46.88" as="geometry" />
+        </mxCell>
+        <mxCell id="jRyagVcxdnyPhSsQ84W--57" parent="1" style="line;strokeWidth=2;html=1;" value="" vertex="1">
+          <mxGeometry height="10" width="546" x="-3" y="43" as="geometry" />
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-37" parent="1" style="shape=table;tableRender=collapsed;startSize=30;container=1;collapsible=0;childLayout=tableLayout;strokeColor=default;fontSize=16;" value="Loan Summary" vertex="1">
+          <mxGeometry height="230" width="368" x="175" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-38" parent="EDPSr4DWZsBDLiE5txXG-37" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="40" width="368" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-39" parent="EDPSr4DWZsBDLiE5txXG-38" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" value="PMT" vertex="1">
+          <mxGeometry height="40" width="185" as="geometry">
+            <mxRectangle height="40" width="185" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-40" parent="EDPSr4DWZsBDLiE5txXG-38" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="40" width="183" x="185" as="geometry">
+            <mxRectangle height="40" width="183" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-42" parent="EDPSr4DWZsBDLiE5txXG-37" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="40" width="368" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-43" parent="EDPSr4DWZsBDLiE5txXG-42" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" value="Total Interest" vertex="1">
+          <mxGeometry height="40" width="185" as="geometry">
+            <mxRectangle height="40" width="185" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-44" parent="EDPSr4DWZsBDLiE5txXG-42" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="40" width="183" x="185" as="geometry">
+            <mxRectangle height="40" width="183" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-53" parent="EDPSr4DWZsBDLiE5txXG-37" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" vertex="1">
+          <mxGeometry height="40" width="368" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-54" parent="EDPSr4DWZsBDLiE5txXG-53" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" value="Total Amount Paid" vertex="1">
+          <mxGeometry height="40" width="185" as="geometry">
+            <mxRectangle height="40" width="185" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-55" parent="EDPSr4DWZsBDLiE5txXG-53" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" vertex="1">
+          <mxGeometry height="40" width="183" x="185" as="geometry">
+            <mxRectangle height="40" width="183" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-46" parent="EDPSr4DWZsBDLiE5txXG-37" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="40" width="368" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-47" parent="EDPSr4DWZsBDLiE5txXG-46" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" value="Total Number of Payments" vertex="1">
+          <mxGeometry height="40" width="185" as="geometry">
+            <mxRectangle height="40" width="185" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-48" parent="EDPSr4DWZsBDLiE5txXG-46" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="40" width="183" x="185" as="geometry">
+            <mxRectangle height="40" width="183" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-50" parent="EDPSr4DWZsBDLiE5txXG-37" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" vertex="1">
+          <mxGeometry height="40" width="368" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-51" parent="EDPSr4DWZsBDLiE5txXG-50" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" value="Loan Type" vertex="1">
+          <mxGeometry height="40" width="185" as="geometry">
+            <mxRectangle height="40" width="185" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EDPSr4DWZsBDLiE5txXG-52" parent="EDPSr4DWZsBDLiE5txXG-50" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;pointerEvents=1;fontSize=16;" vertex="1">
+          <mxGeometry height="40" width="183" x="185" as="geometry">
+            <mxRectangle height="40" width="183" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
