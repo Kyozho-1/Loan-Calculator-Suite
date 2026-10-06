@@ -11,7 +11,7 @@ namespace Loan_Calculator_Suite.frontend {
         
         private ToolStrip _toolStrip;
         private Panel _toolStripPanel;
-        private FlowLayoutPanel _loanInfoInputPanel;
+        private TableLayoutPanel _loanInfoInputPanel;
 
         private TextBox _numOfYearsTextBox;
         private TextBox _annualRateTextBox;
@@ -19,8 +19,8 @@ namespace Loan_Calculator_Suite.frontend {
         private ComboBox _loanTypesComobBox;
         public LoanCalculatorSuiteForm() {
             InitializeWindow();
-            CreateToolStrip();
             CreateLoanInputs();
+            CreateToolStrip(); /* ADD THIS LAST! */
         }
         
         private void InitializeWindow() {
@@ -38,7 +38,7 @@ namespace Loan_Calculator_Suite.frontend {
 
             _toolStripPanel = new() {
                 BorderStyle = BorderStyle.FixedSingle,
-                Dock = DockStyle.Fill,
+                Dock = DockStyle.Top,
                 Height = 40
             };
 
@@ -64,8 +64,11 @@ namespace Loan_Calculator_Suite.frontend {
                 sepCounter++;
             }
 
-            _toolStripPanel.Controls.Add(_toolStrip);
+            _toolStrip.Dock = DockStyle.Fill;
+
             this.Controls.Add(_toolStripPanel);
+            _toolStripPanel.Controls.Add(_toolStrip);
+            
 
             void StylizeButtons() {
                 foreach (var btn in _toolstripButtons) {
@@ -91,8 +94,11 @@ namespace Loan_Calculator_Suite.frontend {
             Label[] labels = [new(), new(), new(), new()];
 
             _loanInfoInputPanel = new() {
-                FlowDirection = FlowDirection.TopDown,
-                Dock = DockStyle.Left
+                RowCount = 8,
+                ColumnCount = 1,
+                Dock = DockStyle.Left,
+                AutoSize = true,
+                Width = 350
             };
 
             _numOfYearsTextBox = new();
@@ -107,18 +113,18 @@ namespace Loan_Calculator_Suite.frontend {
 
             this.Controls.Add(_loanInfoInputPanel);
 
-            _loanInfoInputPanel.Controls.Add(labels[0]);
-            _loanInfoInputPanel.Controls.Add(_numOfYearsTextBox);
+            _loanInfoInputPanel.Controls.Add(labels[0], 0, 0);
+            _loanInfoInputPanel.Controls.Add(_numOfYearsTextBox, 0, 1);
 
-            _loanInfoInputPanel.Controls.Add(labels[1]);
-            _loanInfoInputPanel.Controls.Add(_annualRateTextBox);
+            _loanInfoInputPanel.Controls.Add(labels[1], 0, 2);
+            _loanInfoInputPanel.Controls.Add(_annualRateTextBox, 0, 3);
 
-            _loanInfoInputPanel.Controls.Add(labels[2]);
-            _loanInfoInputPanel.Controls.Add(_PVTextBox);
+            _loanInfoInputPanel.Controls.Add(labels[2], 0, 4);
+            _loanInfoInputPanel.Controls.Add(_PVTextBox, 0, 5);
 
-            _loanInfoInputPanel.Controls.Add(labels[3]);
+            _loanInfoInputPanel.Controls.Add(labels[3], 0, 6);
             _loanTypesComobBox.Items.AddRange(loanTypes);
-            _loanInfoInputPanel.Controls.Add(_loanTypesComobBox);
+            _loanInfoInputPanel.Controls.Add(_loanTypesComobBox, 0, 7);
         }
     }
 }
