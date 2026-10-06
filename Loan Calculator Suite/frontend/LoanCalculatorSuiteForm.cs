@@ -2,84 +2,34 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using Loan_Calculator_Suite.backend;
+
 namespace Loan_Calculator_Suite.frontend {
     public class LoanCalculatorSuiteForm : Form {
         private readonly int[] _windowDimensions = [800, 800];
 
-        
-        private readonly ToolStripButton[] _toolstripButtons = [new(), new(), new(), new()];
-        
-        private ToolStrip _toolStrip;
-        private Panel _toolStripPanel;
         private TableLayoutPanel _loanInfoInputPanel;
 
         private TextBox _numOfYearsTextBox;
         private TextBox _annualRateTextBox;
         private TextBox _PVTextBox;
         private ComboBox _loanTypesComobBox;
+
+        private Loan loan;
+
         public LoanCalculatorSuiteForm() {
+            /* Creating GUIs */
             InitializeWindow();
             CreateLoanInputs();
-            CreateToolStrip(); /* ADD THIS LAST! */
+
+            /* Adding GUI Functionality */
+            AddButtonFunctionality();
         }
         
         private void InitializeWindow() {
             Text = "Loan Calculator Suite";
             Width = _windowDimensions[0];
             Height = _windowDimensions[1];
-        }
-        
-        private void CreateToolStrip() {
-            string[] buttonNames = ["Mortgage", "Auto", "Student", "Quit"];
-
-            _toolStrip = new() {
-                GripStyle = ToolStripGripStyle.Hidden
-            };
-
-            _toolStripPanel = new() {
-                BorderStyle = BorderStyle.FixedSingle,
-                Dock = DockStyle.Top,
-                Height = 40
-            };
-
-            for (int i = 0; i < _toolstripButtons.Length; i++) {
-                _toolstripButtons[i].Text = buttonNames[i];
-            }
-
-            /* Moving the Quit button to the far right of the toolstrip. */
-            _toolstripButtons[^1].Alignment = ToolStripItemAlignment.Right;
-
-            StylizeButtons();
-
-            int sepCounter = 0;
-            const int MAX_SEPERATORS = 2;
-
-            foreach (var btn in _toolstripButtons) {
-                _toolStrip.Items.Add(btn);
-
-                if (sepCounter < MAX_SEPERATORS) {
-                    _toolStrip.Items.Add(new ToolStripSeparator());
-                }
-
-                sepCounter++;
-            }
-
-            _toolStrip.Dock = DockStyle.Fill;
-
-            this.Controls.Add(_toolStripPanel);
-            _toolStripPanel.Controls.Add(_toolStrip);
-            
-
-            void StylizeButtons() {
-                foreach (var btn in _toolstripButtons) {
-                    btn.BackColor = Color.Silver;
-                    btn.Padding = new Padding(4);
-                    btn.AutoToolTip = false;
-                }
-
-                /* Coloring the Quit button to salmon. */
-                _toolstripButtons[^1].BackColor = Color.Salmon;
-            }
         }
 
         private void CreateLoanInputs() {
@@ -125,6 +75,16 @@ namespace Loan_Calculator_Suite.frontend {
             _loanInfoInputPanel.Controls.Add(labels[3], 0, 6);
             _loanTypesComobBox.Items.AddRange(loanTypes);
             _loanInfoInputPanel.Controls.Add(_loanTypesComobBox, 0, 7);
+
+            _loanInfoInputPanel.BorderStyle = BorderStyle.FixedSingle;
+
+            foreach (Label label in labels) {
+                label.Font = new Font("Arial", 10, FontStyle.Regular);
+            }
+        }
+
+        private void AddButtonFunctionality() {
+            
         }
     }
 }
