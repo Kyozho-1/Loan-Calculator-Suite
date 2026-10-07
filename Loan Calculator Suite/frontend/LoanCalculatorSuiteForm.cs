@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Forms;
 
 using Loan_Calculator_Suite.backend;
@@ -15,13 +16,15 @@ namespace Loan_Calculator_Suite.frontend {
         private TextBox _PVTextBox;
         private ComboBox _loanTypesComobBox;
 
-        private Loan loan;
+        private Loan _loan;
 
+        private Button _loanSummaryButton;
+        
         public LoanCalculatorSuiteForm() {
             /* Creating GUIs */
             InitializeWindow();
             CreateLoanInputs();
-
+            
             /* Adding GUI Functionality */
             AddButtonFunctionality();
         }
@@ -76,15 +79,43 @@ namespace Loan_Calculator_Suite.frontend {
             _loanTypesComobBox.Items.AddRange(loanTypes);
             _loanInfoInputPanel.Controls.Add(_loanTypesComobBox, 0, 7);
 
+            CreateLoanSummaryButton();
+
             _loanInfoInputPanel.BorderStyle = BorderStyle.FixedSingle;
 
-            foreach (Label label in labels) {
+            foreach (var label in labels) {
                 label.Font = new Font("Arial", 10, FontStyle.Regular);
+            }
+
+            void CreateLoanSummaryButton() {
+                _loanSummaryButton = new() {
+                    Text = "Create Loan Summary",
+                    BackColor = Color.Orchid,
+                    AutoSize = true
+                };
+
+                _loanInfoInputPanel.Controls.Add(_loanSummaryButton, 0, 8);
             }
         }
 
         private void AddButtonFunctionality() {
-            
+            const string INVALID_DATA_EXCEPTION_STR = "Error! Please enter a number";
+
+            var SLIGHTLY_LIGHT_RED = Color.FromArgb(255, 51, 51);
+
+            _loanSummaryButton.Click += (s, e) => {
+                try {
+                    if (_numOfYearsTextBox.Text == string.Empty) {
+                        _numOfYearsTextBox.BackColor = SLIGHTLY_LIGHT_RED;
+
+                        MessageBox.Show(
+                                "Please enter information in the number of years text box."
+                            );
+                    }
+                } catch (InvalidDataException ide) {
+                    MessageBox.Show(INVALID_DATA_EXCEPTION_STR);
+                }
+            };
         }
     }
 }
