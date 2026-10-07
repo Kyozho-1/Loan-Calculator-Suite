@@ -77,12 +77,7 @@ namespace Loan_Calculator_Suite.frontend {
             _loanInfoInputPanel.Controls.Add(_loanTypesComboBox, 0, 7);
 
             CreateLoanSummaryButton();
-
-            _loanInfoInputPanel.BorderStyle = BorderStyle.FixedSingle;
-
-            foreach (var label in labels) {
-                label.Font = new Font("Arial", 10, FontStyle.Regular);
-            }
+            StylizeForm();
 
             void CreateLoanSummaryButton() {
                 _loanSummaryButton = new() {
@@ -93,6 +88,24 @@ namespace Loan_Calculator_Suite.frontend {
 
                 _loanInfoInputPanel.Controls.Add(_loanSummaryButton, 0, 8);
             }
+
+            void StylizeForm() {
+                _loanInfoInputPanel.BorderStyle = BorderStyle.FixedSingle;
+
+                foreach (var label in labels) {
+                    label.Font = new Font("Arial", 10, FontStyle.Regular);
+                }
+
+                foreach (var txtBox in _loanInfoInputTextBoxes) {
+                    txtBox.BorderStyle = BorderStyle.FixedSingle;
+                    txtBox.BackColor = Color.LightGray;
+                }
+
+                // TODO: Think about whether to implement a custom ComboBox class for customizing
+                // the border.
+
+                _loanTypesComboBox.BackColor = Color.LightGray;
+            }
         }
 
         private void AddButtonFunctionality() {
@@ -102,6 +115,8 @@ namespace Loan_Calculator_Suite.frontend {
             var SLIGHTLY_LIGHT_RED = Color.FromArgb(255, 51, 51);
 
             _loanSummaryButton.Click += (s, e) => {
+                _loanTypesComboBox.TextChanged += TextChanged;
+
                 try {
                     foreach (var txtBox in _loanInfoInputTextBoxes) {
                         txtBox.TextChanged += TextChanged;
@@ -113,10 +128,14 @@ namespace Loan_Calculator_Suite.frontend {
                         }
                     }
 
-                    // TODO: Check for the combo box's emptiness!
+                    if (_loanTypesComboBox.Text == string.Empty) {
+                        _loanTypesComboBox.BackColor = SLIGHTLY_LIGHT_RED;
+
+                        _errorFound = true;
+                    }
 
                     if (_errorFound) { MessageBox.Show(NO_INFO_STR); }
-                } catch (InvalidDataException ide) {
+                } catch (InvalidDataException _) {
                     MessageBox.Show(INVALID_DATA_EXCEPTION_STR);
                 }
             };
@@ -124,7 +143,7 @@ namespace Loan_Calculator_Suite.frontend {
             void TextChanged(object? sender, EventArgs e) {
                 if (sender is TextBox txtBox) {
                     if (!string.IsNullOrEmpty(txtBox.Text)) {
-                        txtBox.BackColor = Color.White;
+                        txtBox.BackColor = Color.LightGray;
 
                         _errorFound = false;
                     }
