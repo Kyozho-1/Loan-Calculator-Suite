@@ -11,15 +11,14 @@ namespace Loan_Calculator_Suite.frontend {
 
         private TableLayoutPanel _loanInfoInputPanel;
 
-        private TextBox _numOfYearsTextBox;
-        private TextBox _annualRateTextBox;
-        private TextBox _PVTextBox;
-        private ComboBox _loanTypesComobBox;
-
+        private TextBox[] _loanInfoInputTextBoxes;
+        private ComboBox _loanTypesComboBox;
         private Loan _loan;
 
         private Button _loanSummaryButton;
-        
+
+        private bool _errorFound = false;
+
         public LoanCalculatorSuiteForm() {
             /* Creating GUIs */
             InitializeWindow();
@@ -54,10 +53,8 @@ namespace Loan_Calculator_Suite.frontend {
                 Width = 350
             };
 
-            _numOfYearsTextBox = new();
-            _annualRateTextBox = new();
-            _PVTextBox = new();
-            _loanTypesComobBox = new();
+            _loanInfoInputTextBoxes = [new(), new(), new()];
+            _loanTypesComboBox = new();
 
             for (int i = 0; i < labelStrs.Length; i++) {
                 labels[i].Text = labelStrs[i];
@@ -67,17 +64,17 @@ namespace Loan_Calculator_Suite.frontend {
             this.Controls.Add(_loanInfoInputPanel);
 
             _loanInfoInputPanel.Controls.Add(labels[0], 0, 0);
-            _loanInfoInputPanel.Controls.Add(_numOfYearsTextBox, 0, 1);
+            _loanInfoInputPanel.Controls.Add(_loanInfoInputTextBoxes[0], 0, 1);
 
             _loanInfoInputPanel.Controls.Add(labels[1], 0, 2);
-            _loanInfoInputPanel.Controls.Add(_annualRateTextBox, 0, 3);
+            _loanInfoInputPanel.Controls.Add(_loanInfoInputTextBoxes[1], 0, 3);
 
             _loanInfoInputPanel.Controls.Add(labels[2], 0, 4);
-            _loanInfoInputPanel.Controls.Add(_PVTextBox, 0, 5);
+            _loanInfoInputPanel.Controls.Add(_loanInfoInputTextBoxes[2], 0, 5);
 
             _loanInfoInputPanel.Controls.Add(labels[3], 0, 6);
-            _loanTypesComobBox.Items.AddRange(loanTypes);
-            _loanInfoInputPanel.Controls.Add(_loanTypesComobBox, 0, 7);
+            _loanTypesComboBox.Items.AddRange(loanTypes);
+            _loanInfoInputPanel.Controls.Add(_loanTypesComboBox, 0, 7);
 
             CreateLoanSummaryButton();
 
@@ -100,22 +97,39 @@ namespace Loan_Calculator_Suite.frontend {
 
         private void AddButtonFunctionality() {
             const string INVALID_DATA_EXCEPTION_STR = "Error! Please enter a number";
+            const string NO_INFO_STR = "Error! Please enter some info the box(es).";
 
             var SLIGHTLY_LIGHT_RED = Color.FromArgb(255, 51, 51);
 
             _loanSummaryButton.Click += (s, e) => {
                 try {
-                    if (_numOfYearsTextBox.Text == string.Empty) {
-                        _numOfYearsTextBox.BackColor = SLIGHTLY_LIGHT_RED;
+                    foreach (var txtBox in _loanInfoInputTextBoxes) {
+                        txtBox.TextChanged += TextChanged;
 
-                        MessageBox.Show(
-                                "Please enter information in the number of years text box."
-                            );
+                        if (txtBox.Text == string.Empty) {
+                            txtBox.BackColor = SLIGHTLY_LIGHT_RED;
+
+                            _errorFound = true;
+                        }
                     }
+
+                    // TODO: Check for the combo box's emptiness!
+
+                    if (_errorFound) { MessageBox.Show(NO_INFO_STR); }
                 } catch (InvalidDataException ide) {
                     MessageBox.Show(INVALID_DATA_EXCEPTION_STR);
                 }
             };
+
+            void TextChanged(object? sender, EventArgs e) {
+                if (sender is TextBox txtBox) {
+                    if (!string.IsNullOrEmpty(txtBox.Text)) {
+                        txtBox.BackColor = Color.White;
+
+                        _errorFound = false;
+                    }
+                }
+            }
         }
     }
 }
