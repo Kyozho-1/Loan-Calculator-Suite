@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Numerics;
-using System.Text;
-
-namespace Loan_Calculator_Suite.backend {
+﻿namespace Loan_Calculator_Suite.backend {
     public class Loan(int years, decimal annualRate, decimal PV, Loan.LoanType loanType) {
         public enum LoanType : int {
-            MORTGAGE,
-            AUTO,
-            STUDENT
+            Mortgage,
+            Auto,
+            Student
         }
         /// <summary>
         /// Total number of payments.

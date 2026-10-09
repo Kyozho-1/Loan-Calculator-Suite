@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using System;
 
 using Loan_Calculator_Suite.backend;
 
@@ -14,7 +12,6 @@ namespace Loan_Calculator_Suite.frontend {
         private TextBox[] _loanInfoInputTextBoxes;
         private ComboBox _loanTypesComboBox;
         private Loan _loan;
-
         private Button _loanSummaryButton;
 
         private bool _errorFound = false;
@@ -76,6 +73,18 @@ namespace Loan_Calculator_Suite.frontend {
             _loanTypesComboBox.Items.AddRange(loanTypes);
             _loanInfoInputPanel.Controls.Add(_loanTypesComboBox, 0, 7);
 
+            /* Setting the default selected item. */
+            _loanTypesComboBox.SelectedItem = loanTypes[0];
+
+            /* This makes the combo box uneditable. */
+            _loanTypesComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            _loanTypesComboBox.TextChanged += TextChanged;
+            
+            foreach (TextBox txtBox in _loanInfoInputTextBoxes) {
+                txtBox.TextChanged += TextChanged;
+            }
+
             CreateLoanSummaryButton();
             StylizeForm();
 
@@ -100,11 +109,6 @@ namespace Loan_Calculator_Suite.frontend {
                     txtBox.BorderStyle = BorderStyle.FixedSingle;
                     txtBox.BackColor = Color.LightGray;
                 }
-
-                // TODO: Think about whether to implement a custom ComboBox class for customizing
-                // the border.
-
-                _loanTypesComboBox.BackColor = Color.LightGray;
             }
         }
 
@@ -115,12 +119,10 @@ namespace Loan_Calculator_Suite.frontend {
             var SLIGHTLY_LIGHT_RED = Color.FromArgb(255, 51, 51);
 
             _loanSummaryButton.Click += (s, e) => {
-                _loanTypesComboBox.TextChanged += TextChanged;
-
                 try {
-                    foreach (var txtBox in _loanInfoInputTextBoxes) {
-                        txtBox.TextChanged += TextChanged;
+                    _errorFound = false;
 
+                    foreach (var txtBox in _loanInfoInputTextBoxes) {
                         if (txtBox.Text == string.Empty) {
                             txtBox.BackColor = SLIGHTLY_LIGHT_RED;
 
@@ -128,25 +130,35 @@ namespace Loan_Calculator_Suite.frontend {
                         }
                     }
 
-                    if (_loanTypesComboBox.Text == string.Empty) {
-                        _loanTypesComboBox.BackColor = SLIGHTLY_LIGHT_RED;
+                    if (_errorFound) { 
+                        MessageBox.Show(NO_INFO_STR);
+                    } else {
+                        int years = int.Parse(_loanInfoInputTextBoxes[0].Text);
+                        decimal annualRate = decimal.Parse(_loanInfoInputTextBoxes[1].Text);
 
-                        _errorFound = true;
+                        if (_loanInfoInputTextBoxes[2].Text.Contains(',')) {
+                            _loanInfoInputTextBoxes[2].Text = _loanInfoInputTextBoxes[2].Text.Replace(",", "");
+                        }
+
+                        decimal PV = decimal.Parse(_loanInfoInputTextBoxes[2].Text);
+                        Loan.LoanType loanType = Enum.Parse<Loan.LoanType>(_loanTypesComboBox.SelectedItem.ToString());
+                        
+                        _loan = new(years, annualRate, PV, loanType);
+
+                        Console.WriteLine(_loan);
                     }
-
-                    if (_errorFound) { MessageBox.Show(NO_INFO_STR); }
-                } catch (InvalidDataException _) {
-                    MessageBox.Show(INVALID_DATA_EXCEPTION_STR);
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.ToString());
                 }
             };
+        }
 
-            void TextChanged(object? sender, EventArgs e) {
-                if (sender is TextBox txtBox) {
-                    if (!string.IsNullOrEmpty(txtBox.Text)) {
-                        txtBox.BackColor = Color.LightGray;
+        void TextChanged(object? sender, EventArgs e) {
+            if (sender is TextBox txtBox) {
+                if (!string.IsNullOrEmpty(txtBox.Text)) {
+                    txtBox.BackColor = Color.LightGray;
 
-                        _errorFound = false;
-                    }
+                    _errorFound = false;
                 }
             }
         }
