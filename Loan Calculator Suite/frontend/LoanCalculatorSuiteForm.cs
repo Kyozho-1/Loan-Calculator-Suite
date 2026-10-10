@@ -1,9 +1,5 @@
-﻿using System.Windows.Forms;
-using System;
-
-using Loan_Calculator_Suite.backend;
-using System.Data;
-using System.Drawing.Printing;
+﻿using Loan_Calculator_Suite.backend;
+using Microsoft.VisualBasic.Devices;
 
 namespace Loan_Calculator_Suite.frontend {
     public class LoanCalculatorSuiteForm : Form {
@@ -109,7 +105,7 @@ namespace Loan_Calculator_Suite.frontend {
             void CreateLoanSummaryButton() {
                 _loanSummaryButton = new() {
                     Text = "Create Loan Summary",
-                    BackColor = Color.Orchid,
+                    BackColor = CustomColors.MagentaBloom,
                     AutoSize = true
                 };
 
@@ -132,11 +128,14 @@ namespace Loan_Calculator_Suite.frontend {
 
                 _loanSummaryButton.Font = new(DEFAULT_FONT, 14, FontStyle.Regular);
                 _loanSummaryButton.Margin = new(0, 20, 0, 0);
+                _loanSummaryButton.Cursor = Cursors.Hand;
 
                 _loanTypesComboBox.Font = new(DEFAULT_FONT, 14, FontStyle.Regular);
+                _loanTypesComboBox.BackColor = Color.LightGray;
+                _loanTypesComboBox.Cursor = Cursors.Hand;
 
-                splitContainer.Panel1.BackColor = Color.MintCream;
-                splitContainer.Panel2.BackColor = Color.MintCream;
+                splitContainer.Panel1.BackColor = CustomColors.GhostWhite;
+                splitContainer.Panel2.BackColor = CustomColors.GhostWhite;
             }
         }
 
@@ -144,15 +143,13 @@ namespace Loan_Calculator_Suite.frontend {
             const string INVALID_DATA_EXCEPTION_STR = "Error! Please enter a number in the box(s).";
             const string NO_INFO_STR = "Error! Please enter some info the box(es).";
 
-            var SLIGHTLY_LIGHT_RED = Color.FromArgb(255, 51, 51);
-
             _loanSummaryButton.Click += (s, e) => {
                 try {
                     _errorFound = false;
 
                     foreach (var txtBox in _loanInfoInputTextBoxes) {
                         if (txtBox.Text == string.Empty) {
-                            txtBox.BackColor = SLIGHTLY_LIGHT_RED;
+                            txtBox.BackColor = Color.Red;
 
                             _errorFound = true;
                         }
@@ -179,8 +176,6 @@ namespace Loan_Calculator_Suite.frontend {
                     }
                 } catch (Exception ex) {
                     MessageBox.Show(INVALID_DATA_EXCEPTION_STR);
-
-                    
                 }
             };
         }
