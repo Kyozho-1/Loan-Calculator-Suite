@@ -2,17 +2,21 @@
 using System;
 
 using Loan_Calculator_Suite.backend;
+using System.Data;
+using System.Drawing.Printing;
 
 namespace Loan_Calculator_Suite.frontend {
     public class LoanCalculatorSuiteForm : Form {
         private readonly int[] _windowDimensions = [800, 800];
 
+        private SplitContainer splitContainer;
         private TableLayoutPanel _loanInfoInputPanel;
-
         private TextBox[] _loanInfoInputTextBoxes;
         private ComboBox _loanTypesComboBox;
         private Loan _loan;
         private Button _loanSummaryButton;
+
+        private readonly string DEFAULT_FONT = "Agency FB";
 
         private bool _errorFound = false;
 
@@ -26,9 +30,14 @@ namespace Loan_Calculator_Suite.frontend {
         }
         
         private void InitializeWindow() {
-            Text = "Loan Calculator Suite";
-            Width = _windowDimensions[0];
-            Height = _windowDimensions[1];
+            this.Text = "Loan Calculator Suite";
+            this.TopMost = true;
+
+            /* This is for when the user makes the window smaller. */
+            this.Width = _windowDimensions[0];
+            this.Height = _windowDimensions[1];
+
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void CreateLoanInputs() {
@@ -42,13 +51,23 @@ namespace Loan_Calculator_Suite.frontend {
 
             Label[] labels = [new(), new(), new(), new()];
 
-            _loanInfoInputPanel = new() {
-                RowCount = 8,
-                ColumnCount = 1,
-                Dock = DockStyle.Left,
-                AutoSize = true,
-                Width = 350
+            splitContainer = new() {
+                Orientation = Orientation.Vertical,
+                Dock = DockStyle.Fill,
+                Height = Screen.FromControl(this).WorkingArea.Height,
+                SplitterDistance = labelStrs.Max(s => s.Length) - 5,
+                SplitterWidth = 10,
+                /* TODO: Fix width issue with 2nd panel. */
+                BorderStyle = BorderStyle.FixedSingle
             };
+
+            _loanInfoInputPanel = new() {
+                AutoSize = true,
+                Dock = DockStyle.Left,
+                RowCount = 8
+            };
+
+            splitContainer.Panel1.Controls.Add(_loanInfoInputPanel);
 
             _loanInfoInputTextBoxes = [new(), new(), new()];
             _loanTypesComboBox = new();
@@ -58,11 +77,8 @@ namespace Loan_Calculator_Suite.frontend {
                 labels[i].AutoSize = true;
             }
 
-            this.Controls.Add(_loanInfoInputPanel);
-
             _loanInfoInputPanel.Controls.Add(labels[0], 0, 0);
             _loanInfoInputPanel.Controls.Add(_loanInfoInputTextBoxes[0], 0, 1);
-
             _loanInfoInputPanel.Controls.Add(labels[1], 0, 2);
             _loanInfoInputPanel.Controls.Add(_loanInfoInputTextBoxes[1], 0, 3);
 
@@ -88,6 +104,8 @@ namespace Loan_Calculator_Suite.frontend {
             CreateLoanSummaryButton();
             StylizeForm();
 
+            this.Controls.Add(splitContainer);
+
             void CreateLoanSummaryButton() {
                 _loanSummaryButton = new() {
                     Text = "Create Loan Summary",
@@ -102,18 +120,28 @@ namespace Loan_Calculator_Suite.frontend {
                 _loanInfoInputPanel.BorderStyle = BorderStyle.FixedSingle;
 
                 foreach (var label in labels) {
-                    label.Font = new Font("Arial", 10, FontStyle.Regular);
+                    label.Font = new(DEFAULT_FONT, 16, FontStyle.Regular);
                 }
 
                 foreach (var txtBox in _loanInfoInputTextBoxes) {
                     txtBox.BorderStyle = BorderStyle.FixedSingle;
                     txtBox.BackColor = Color.LightGray;
+                    txtBox.Size = new() { Width = 150 };
+                    txtBox.Font = new(DEFAULT_FONT, 12, FontStyle.Regular);
                 }
+
+                _loanSummaryButton.Font = new(DEFAULT_FONT, 14, FontStyle.Regular);
+                _loanSummaryButton.Margin = new(0, 20, 0, 0);
+
+                _loanTypesComboBox.Font = new(DEFAULT_FONT, 14, FontStyle.Regular);
+
+                splitContainer.Panel1.BackColor = Color.MintCream;
+                splitContainer.Panel2.BackColor = Color.MintCream;
             }
         }
 
         private void AddButtonFunctionality() {
-            const string INVALID_DATA_EXCEPTION_STR = "Error! Please enter a number";
+            const string INVALID_DATA_EXCEPTION_STR = "Error! Please enter a number in the box(s).";
             const string NO_INFO_STR = "Error! Please enter some info the box(es).";
 
             var SLIGHTLY_LIGHT_RED = Color.FromArgb(255, 51, 51);
@@ -146,13 +174,55 @@ namespace Loan_Calculator_Suite.frontend {
                         _loan = new(years, annualRate, PV, loanType);
 
                         Console.WriteLine(_loan);
+
+                        //CreateLoanSummary();
                     }
                 } catch (Exception ex) {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show(INVALID_DATA_EXCEPTION_STR);
+
+                    
                 }
             };
         }
 
+        private void CreateLoanSummary() {
+            TableLayoutPanel loanSummary = new() {
+                Dock = DockStyle.Left,
+                ColumnCount = 2,
+                RowCount = 6,
+                AutoSize = true,
+                CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+            };
+
+            string[] ROW_DETAILS = [
+                "PMT", "Total Interest", "Total Amount Paid", 
+                "Total Number of Payments", "Loan Type"
+            ];
+
+            for (int i = 0; i < ROW_DETAILS.Length; i++) {
+                loanSummary.Controls.Add(
+                    new Label() {
+                        Text = ROW_DETAILS[i],
+                        Dock = DockStyle.Fill,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        AutoSize = false
+                    },
+                    0, i
+                );
+
+                loanSummary.Controls.Add(
+                    new Label() {
+                        Text = "",
+                        Dock = DockStyle.Fill,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        AutoSize = false
+                    },
+                    1, i
+                );
+            }
+
+            this.Controls.Add(loanSummary);
+        }
         void TextChanged(object? sender, EventArgs e) {
             if (sender is TextBox txtBox) {
                 if (!string.IsNullOrEmpty(txtBox.Text)) {
